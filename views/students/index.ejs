@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Student Management System</title>
+    <% include ../students/partials/head %> <!-- If head contains CSS/JS links -->
+</head>
+<body>
+    <% include ../students/partials/nav %>
+    
+    <div class="container">
+        <div class="row">
+            <% include ../students/partials/messages.ejs %>
+            
+            <div class="input-field col s7">
+                <a class="btn waves-effect waves-light green col s4" href="/students/create">Add Records</a>
+            </div>
+
+            <!-- Search Bar Start -->
+            <div class="input-field col s7">
+                <i class="mdi-action-search prefix"></i>
+                <input type="text" id="search" name="search" onkeyup="searchStudents()" placeholder="Search Students" />
+            </div>
+            <!-- Search Bar End -->
+        </div>
+
+        <% if (students && students.length > 0) { %>
+        <table>
+            <thead>
+                <tr>
+                    <th>Student Name</th>
+                    <th>Batch</th>
+                    <th>Address</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="students-table-body">
+                <% students.forEach(function(student) { %>
+                <tr>
+                    <td><%= student.name %></td>
+                    <td><%= student.batch %></td>
+                    <td><%= student.address %></td>
+                    <td>
+                        <a class="btn waves-effect waves-light blue col s4" href="/students/show/<%= student._id %>">View Details</a>
+                    </td>
+                </tr>
+                <% }); %>
+            </tbody>
+        </table>
+        <% } else { %>
+        <div>No Students Found</div>
+        <% } %>
+    </div>
+
+    <script>
+    function searchStudents() {
+        var input, filter, table, tr, td, i, j, txtValue;
+        input = document.getElementById("search");
+        filter = input.value.toUpperCase();
+        table = document.querySelector("table");
+        if (!table) return; // in case table doesn't exist yet
+        tr = table.getElementsByTagName("tr");
+
+        for (i = 1; i < tr.length; i++) {
+            tr[i].style.display = "none";
+            td = tr[i].getElementsByTagName("td");
+            for (j = 0; j < td.length; j++) {
+                if (td[j]) {
+                    txtValue = td[j].textContent || td[j].innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                        break;
+                    }
+                }
+            }
+        }
+    }
+    </script>
+</body>
+</html>

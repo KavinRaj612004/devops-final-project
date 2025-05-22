@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Student Management System</title>
+    <% include ../students/partials/head %>
+    <style>
+        /* Add your custom CSS styles here */
+        body {
+            background-image: url('https://cdn.pixabay.com/photo/2017/10/31/19/05/web-design-2906159_1280.jpg');
+            background-size: cover;
+            background-position: center;
+            font-family: Arial, sans-serif;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            border-bottom: 2px solid #333;
+            padding-bottom: 20px;
+        }
+
+        .container {
+            width: 50%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8); /* Add background color with opacity */
+            border-radius: 10px; /* Add border-radius for container */
+        }
+
+        .input-field label {
+            font-size: 16px;
+            color: #333;
+            text-align: center; /* Center align the text */
+            display: block; /* Ensure label text takes full width */
+        }
+
+        .input-field input[type="text"],
+        .input-field input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            margin-top: 5px;
+            box-sizing: border-box;
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <% include ../students/partials/nav %>
+
+    <div class="container">
+        <h1>Student Detail</h1>
+
+        <% include ../students/partials/messages %>
+        <table>
+            <tbody>
+                <tr>
+                    <td>Name</td>
+                    <td>:</td>
+                    <td><%= student.name %></td>
+                </tr>
+                <tr>
+                    <td>Address</td>
+                    <td>:</td>
+                    <td><%= student.address %></td>
+                </tr>
+                <tr>
+                    <td>Batch</td>
+                    <td>:</td>
+                    <td><%= student.batch %></td>
+                </tr>
+                <tr>
+                    <td>Roll Number</td>
+                    <td>:</td>
+                    <td><%= student.roll_number %></td>
+                </tr>
+                <tr>
+                    <td>CGPA</td>
+                    <td>:</td>
+                    <td><%= student.cgpa %></td>
+                </tr>
+                <tr>
+                    <td>Phone Number</td>
+                    <td>:</td>
+                    <td><%= student.phone_number %></td>
+                </tr>
+                <tr>
+                    <td>Date of Birth</td>
+                    <td>:</td>
+                    <td><%= student.dob %></td>
+                </tr>
+                <tr>
+                    <td>Blood Group</td>
+                    <td>:</td>
+                    <td><%= student.blood_group %></td>
+                </tr>
+            </tbody>
+        </table>
+        <a href="/students/edit/<%= student._id %>" class="btn waves-effect waves-light green col s4"
+            style="text-align: center;">EDIT</a>
+        <form method="post" action="/students/delete/<%= student._id %>">
+            <button type="submit" name="action" value="Delete" class="btn waves-effect waves-light red col s4"
+                style="text-align: center;"
+                onClick="return confirm('Are you sure you want to delete?')">Delete</button>
+            <input type="hidden" name="_method" value="DELETE" />
+        </form>
+    </div>
+
+</body>
+
+</html>

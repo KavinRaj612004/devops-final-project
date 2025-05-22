@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Management System</title>
+    <!-- Head Section Starts -->
+    <%- include('students/partials/head') %>
+    <!-- Head Section Ends -->
+    <style>
+        /* Add your custom CSS styles here */
+        body {
+            background-image: url('https://cdn.pixabay.com/photo/2017/10/31/19/05/web-design-2906159_1280.jpg');
+            background-size: cover;
+            background-position: center;
+            font-family: Arial, sans-serif;
+            color: #333;
+        }
+        h1 {
+            text-align: center;
+            border-bottom: 2px solid #333;
+            padding-bottom: 20px;
+        }
+        .container {
+            width: 50%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8); /* Add background color with opacity */
+            border-radius: 10px; /* Add border-radius for container */
+        }
+        .input-field label {
+            font-size: 16px;
+            color: #333;
+            text-align: center; /* Center align the text */
+            display: block; /* Ensure label text takes full width */
+        }
+        .input-field input[type="text"],
+        .input-field input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            margin-top: 5px;
+            box-sizing: border-box;
+        }
+        button[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>KEC Students Information System</h1>
+
+        <form class="myclass" action="/" method="post">
+            <div class="row">
+                <!-- Include messages -->
+                <%- include('students/partials/messages') %>
+            </div>
+            <div class="row margin">
+                <div class="input-field col s6">
+                    <i class="mdi-social-person-outline prefix"></i>
+                    <input class="validate" id="first_name" type="text" name="username">
+                    <label for="first_name" data-error="wrong" data-success="right">Admin Name</label>
+                </div>
+            </div>
+            <div class="row margin">
+                <div class="input-field col s6">
+                    <i class="mdi-action-list prefix"></i>
+                    <input class="validate" id="password" type="password" name="password">
+                    <label for="password" data-error="wrong" data-success="right">Password</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <button class="btn waves-effect waves-light col s6" type="submit">Login</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

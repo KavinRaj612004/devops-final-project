@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Management System</title>
+    <style>
+        /* CSS for setting background image */
+        body {
+            background-image: url('kec.jpg');
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .col.s12.z-depth-6.card-panel {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+        }
+        .input-field {
+            margin-bottom: 20px;
+        }
+        .center {
+            text-align: center;
+        }
+        .btn {
+            background-color: #4caf50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <% include ../students/partials/head %>
+
+    <% include ../students/partials/nav %>
+
+    <div class="container">
+        <div id="login-page" class="row">
+            <div class="col s12 z-depth-6 card-panel">
+                <div class="input-field col s12 center">
+                    <h1 class="center login-form-text" href="/students">Add Record</h1>
+                </div>
+
+                <form class="myclass" action="/students/save" method="post">
+                    <div class="row"></div>
+                    <div class="row margin">
+                        <div class="input-field col s6">
+                            <i class="mdi-social-person-outline prefix"></i>
+                            <input class="validate" id="first_name" type="text" name="name">
+                            <label for="first_name" data-error="wrong" data-success="right" class="center-align">Student Name</label>
+                            <% include ../students/partials/messages.ejs %>
+                        </div>
+                    </div>
+                    <div class="row margin">
+                        <div class="input-field col s6">
+                            <i class="mdi-action-assignment prefix"></i>
+                            <textarea class="validate" id="address" type="text" style="margin: 0px 0px 0px 45px; width: 360px; height: 128px;" name="address"></textarea>
+                            <label for="address" data-error="wrong" data-success="right" class="center-align">Address</label>
+                        </div>
+                    </div>
+                    <div class="row margin">
+                        <div class="input-field col s6">
+                            <i class="mdi-action-list prefix"></i>
+                            <input class="validate" id="batch" type="text" name="batch">
+                            <label for="batch" data-error="wrong" data-success="right" class="center-align">Batch</label>
+                        </div>
+                    </div>
+                    <!-- New fields start here -->
+                    <div class="row margin">
+                        <div class="input-field col s6">
+                            <i class="mdi-action-account-balance prefix"></i>
+                            <input class="validate" id="roll_number" type="text" name="roll_number">
+                            <label for="roll_number" data-error="wrong" data-success="right" class="center-align">Roll Number</label>
+                        </div>
+                    </div>
+                    <div class="row margin">
+                        <div class="input-field col s6">
+                            <i class="mdi-editor-insert-chart prefix"></i>
+                            <input class="validate" id="cgpa" type="number" step="0.01" name="cgpa">
+                            <label for="cgpa" data-error="wrong" data-success="right" class="center-align">CGPA</label>
+                        </div>
+                    </div>
+                    <div class="row margin">
+                        <div class="input-field col s6">
+                            <i class="mdi-communication-phone prefix"></i>
+                            <input class="validate" id="phone_number" type="tel" name="phone_number">
+                            <label for="phone_number" data-error="wrong" data-success="right" class="center-align">Phone Number</label>
+                        </div>
+                    </div>
+                    <div class="row margin">
+                        <div class="input-field col s6">
+                            <i class="mdi-action-event prefix"></i>
+                            <input class="validate" id="dob" type="text" name="dob">
+                            <label for="dob" data-error="wrong" data-success="right" class="center-align"></label>
+                        </div>
+                    </div>
+                    <div class="row margin">
+                        <div class="input-field col s6">
+                            <i class="mdi-action-favorite prefix"></i>
+                            <input class="validate" id="blood_group" type="text" name="blood_group">
+                            <label for="blood_group" data-error="wrong" data-success="right" class="center-align">Blood Group</label>
+                        </div>
+                    </div>
+                    <!-- New fields end here -->
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <button class="btn" type="submit">Create</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
